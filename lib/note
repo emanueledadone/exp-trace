@@ -1,0 +1,9 @@
+flutter doctor -> stato
+flutter build windows -> .exe windows
+flutter build apk --release -> apk
+flutter clean -> pulizia build 
+flutter pub cache clean -> pulizia cache
+
+
+app -> scr -> main -> manifest android
+ios -> runner -> info.plist ios

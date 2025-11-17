@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
 import 'pages/home_page.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
-void main() {
+void main() async {
   // Controlla la piattaforma
   if (kIsWeb) {
     databaseFactory = databaseFactoryFfiWeb;
@@ -13,6 +14,8 @@ void main() {
     sqfliteFfiInit();
     databaseFactory = databaseFactoryFfi;
   }
+  await initializeDateFormatting('it_IT', null);
+
   // Su Android e iOS, non è necessaria nessuna configurazione speciale
   runApp(MyApp());
 }

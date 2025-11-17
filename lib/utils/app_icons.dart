@@ -29,6 +29,10 @@ class AppIcons {
     'investments': Icons.trending_up,
     'income': Icons.attach_money,
     'subscriptions': Icons.subscriptions,
+
+    // Salute
+    'health_and_safety': Icons.health_and_safety,
+    'medication': Icons.medication,
   };
 }
 

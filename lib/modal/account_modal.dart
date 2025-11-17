@@ -113,7 +113,36 @@ class _AccountModalState extends State<AccountModal> {
       actions: [
         if (isEditing)
           TextButton(
-            onPressed: _deleteAccount,
+            onPressed: () async {
+              final bool? conferma = await showDialog<bool>(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: Text('Conferma eliminazione'),
+                    content: Text(
+                      'Sei sicuro di voler eliminare questo conto?',
+                    ),
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, false),
+                        child: Text('Annulla'),
+                      ),
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, true),
+                        child: Text(
+                          'Elimina',
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              );
+
+              if (conferma == true) {
+                await _deleteAccount();
+              }
+            },
             child: Text('Elimina', style: TextStyle(color: Colors.red)),
           ),
         ElevatedButton(onPressed: _saveAccount, child: Text('Salva')),
